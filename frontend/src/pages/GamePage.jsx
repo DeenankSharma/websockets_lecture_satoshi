@@ -13,13 +13,13 @@ function GamePage(){
   const [blueBar,setBlueBar] = useState(50)
   const {playerName,setPlayerName,teamName, setTeamName, socket_1, setSocket_1} = usePlayerContext();
   const {winner, setWinner, list_of_winners,setListOfWinners} = useWinnerContext();
-
-  useEffect(()=>{
-    const socket = SocketIOClient('https://websockets-lecture-satoshi-backend.onrender.com', {
-      transports: ['websocket'],
-      withCredentials: true,
-  });
   
+  useEffect(()=>{
+    if(socket_1===null){
+      const socket = SocketIOClient('http://localhost:5000', {
+        transports: ['websocket'],
+        withCredentials: true,
+    });
     setSocket_1(socket)
     console.log(socket)
     console.log('yaha tak aa gye hai')
@@ -55,8 +55,10 @@ function GamePage(){
       setListOfWinners1(data.list_of_winners)
       setWinner(data.winner)
       setListOfWinners(data.list_of_winners)
+      setBlueBar(50)
       navigate('/result')
     })
+    } 
   },[]);
 
   function pull_the_rope(){

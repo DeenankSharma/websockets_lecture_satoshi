@@ -19,7 +19,6 @@ function ResultPage(){
     setWinner(null)
     setListOfWinners([])
     navigate('/')
-
   }
   return(<>
   <div style={{display:'flex',flexDirection:'column', alignItems: 'center'}}>

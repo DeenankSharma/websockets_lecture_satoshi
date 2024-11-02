@@ -79,6 +79,8 @@ io.on('connection', (socket) => {
       })
       if(red_bar>=100){
         console.log(red_players_name)
+        red_bar=50;
+        blue_bar=50;
         io.emit('game_over',{
           winner:'red_team',
           list_of_winners : red_players_name
@@ -94,6 +96,8 @@ io.on('connection', (socket) => {
       })
       if(blue_bar>=100){
         console.log(blue_players_name)
+        red_bar=50;
+        blue_bar=50;
         io.emit('game_over',{
           winner:'blue_team',
           list_of_winners : blue_players_name
@@ -103,6 +107,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on('disconnect',()=>{
+    console.log('ye original disconnect hai');
     var playerTeam = players.get(socket.id);
     var playerName = players_with_name.get(socket.id);
     if (playerTeam && playerName) {
