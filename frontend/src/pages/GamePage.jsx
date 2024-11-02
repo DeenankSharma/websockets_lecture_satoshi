@@ -15,7 +15,7 @@ function GamePage(){
   const {winner, setWinner, list_of_winners,setListOfWinners} = useWinnerContext();
 
   useEffect(()=>{
-    const socket = SocketIOClient('https://websockets-lecture-satoshi.onrender.com', {
+    const socket = SocketIOClient('https://websockets-lecture-satoshi-backend.onrender.com', {
       transports: ['websocket'],
       withCredentials: true,
   });
