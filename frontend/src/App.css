@@ -1,3 +1,8 @@
+@import './styles/GamePage.css';
+@import './styles/LandPage.css';
+@import './styles/playerTile.css';
+@import './styles/resultsTile.css';
+
 .App {
   text-align: center;
 }

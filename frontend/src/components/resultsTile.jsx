@@ -1,4 +1,3 @@
-import './resultsTile.css'
 
 function ResultsTile(props){
   return(

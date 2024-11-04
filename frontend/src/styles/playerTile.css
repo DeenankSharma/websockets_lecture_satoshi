@@ -1,4 +1,4 @@
-.player-container {
+.player_container {
   background-color: #ffd476;
   border-radius: 20px;
   padding: 40px;
@@ -10,9 +10,9 @@
   transform: perspective(1000px) rotateX(2deg);
   border: 2px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  position: fixed;
-  top: 50;
-  right: 50
+  position:fixed;
+  top:5px;
+  right:5px;
 }
 
 .player_name, .team_name_red , .team_name_blue{
@@ -22,11 +22,10 @@
   font-size: 1em;
 }
 
-.team_red_span{
+.red_team_span{
   color: red;
 }
 
-.team_blue_span{
+.blue_team_span{
   color: blue;
 }
-

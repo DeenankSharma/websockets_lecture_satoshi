@@ -49,19 +49,26 @@ io.on('connection', (socket) => {
   }
 
   socket.on('joined_now',(playerData)=>{
-    console.log(playerData.team)
-    if(playerData.team==='red'){
-    console.log('red team mein aa gya')
-      red_players_name.push(playerData.name)
-      players_with_name.set(socket.id,playerData.name)
-      console.log(red_players_name)
+    if(red_players_name.length ===1 && blue_players_name.length === 1){
+      io.to(socket.id).emit('game_full');
+      console.log('game room is full')
+      players.delete(socket.id)
+    }else{
+      console.log(playerData.team)
+      if(playerData.team==='red'){
+      console.log('red team mein aa gya')
+        red_players_name.push(playerData.name)
+        players_with_name.set(socket.id,playerData.name)
+        console.log(red_players_name)
+      }
+      else if(playerData.team==='blue'){
+        console.log('blue team mein aa gya')
+        blue_players_name.push(playerData.name)
+        players_with_name.set(socket.id,playerData.name)
+        console.log(blue_players_name)
+      }
     }
-    else if(playerData.team==='blue'){
-      console.log('blue team mein aa gya')
-      blue_players_name.push(playerData.name)
-      players_with_name.set(socket.id,playerData.name)
-      console.log(blue_players_name)
-    }
+   
     if(blue_players_name.length + red_players_name.length === 2){
       console.log(blue_players_name.length + red_players_name.length)
       io.emit('game_start','let the game begin')

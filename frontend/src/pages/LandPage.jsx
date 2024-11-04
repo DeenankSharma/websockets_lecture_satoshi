@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './LandPage.css';  // Make sure this path is correct
 import { usePlayerContext } from '../context/PlayerContext.js'
 
 const LandingPage = () => {
