@@ -17,7 +17,7 @@ function GamePage(){
   
   useEffect(()=>{
     if(socket_1===null){
-      const socket = SocketIOClient('http://localhost:5000', {
+      const socket = SocketIOClient('https://websockets-lecture-satoshi-backend.onrender.com', {
         transports: ['websocket'],
         withCredentials: true,
     });
