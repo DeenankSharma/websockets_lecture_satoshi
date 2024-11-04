@@ -30,8 +30,10 @@ let red_bar = 50
 
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id);
-
-  if(red_players_name.length === 0 || red_players_name.length < blue_players_name.length ){
+  if (red_players_name.length === 1 && blue_players_name.length === 1){
+    io.to(socket.id).emit('game_full');
+  }
+  else if(red_players_name.length === 0 || red_players_name.length < blue_players_name.length ){
     socket.join('red_team')
     io.to(socket.id).emit('added_to_team',{team:'red_team'})
     players.set(socket.id,'red');
@@ -49,11 +51,6 @@ io.on('connection', (socket) => {
   }
 
   socket.on('joined_now',(playerData)=>{
-    if(red_players_name.length ===1 && blue_players_name.length === 1){
-      io.to(socket.id).emit('game_full');
-      console.log('game room is full')
-      players.delete(socket.id)
-    }else{
       console.log(playerData.team)
       if(playerData.team==='red'){
       console.log('red team mein aa gya')
@@ -67,7 +64,7 @@ io.on('connection', (socket) => {
         players_with_name.set(socket.id,playerData.name)
         console.log(blue_players_name)
       }
-    }
+    
    
     if(blue_players_name.length + red_players_name.length === 2){
       console.log(blue_players_name.length + red_players_name.length)
