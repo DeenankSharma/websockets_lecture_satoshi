@@ -30,7 +30,7 @@ let red_bar = 50
 
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id);
-  if (red_players_name.length === 2 && blue_players_name.length === 2){
+  if (red_players_name.length === 4 && blue_players_name.length === 4){
     io.to(socket.id).emit('game_full');
   }
   else if(red_players_name.length === 0 || red_players_name.length < blue_players_name.length ){
@@ -44,7 +44,7 @@ io.on('connection', (socket) => {
     players.set(socket.id,'blue')
   }
 
-  else if (blue_players_name.length === red_players_name.length && blue_players_name.length !== 2){
+  else if (blue_players_name.length === red_players_name.length && blue_players_name.length !== 4){
     socket.join('blue_team')
     io.to(socket.id).emit('added_to_team',{team:'blue_team'})
     players.set(socket.id,'blue')
@@ -66,7 +66,7 @@ io.on('connection', (socket) => {
       }
     
    
-    if(blue_players_name.length + red_players_name.length === 4){
+    if(blue_players_name.length + red_players_name.length === 8){
       console.log(blue_players_name.length + red_players_name.length)
       io.emit('game_start','let the game begin')
     }
